@@ -7,7 +7,7 @@ export interface PaginatedResponse<T> {
     totalPages: number;
     totalItems: number;
     itemsPerPage: number;
-  }
+  };
 }
 
 export interface UserWithoutPassword {

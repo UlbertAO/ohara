@@ -7,13 +7,15 @@ import NotFound from "./pages/not-found";
 import { Route, Switch } from "wouter";
 import { ProtectedRoute } from "./lib/protected-route";
 import HomePage from "./pages/home-page";
+import AuthPage from "./pages/auth-page";
+import DashboardPage from "./pages/dashboard-page";
 
 function Router() {
   return (
     <Switch>
       <Route path="/" component={HomePage} />
-      {/* <Route path="/auth" component={AuthPage} />
-      <ProtectedRoute path="/dashboard" component={DashboardPage} /> */}
+      <Route path="/auth" component={AuthPage} />
+      <ProtectedRoute path="/dashboard" component={DashboardPage} />
       <Route component={NotFound} />
     </Switch>
   );

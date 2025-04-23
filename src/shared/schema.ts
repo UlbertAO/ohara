@@ -20,6 +20,15 @@ import { z } from "zod";
 //   lastOpened: timestamp("last_opened"),
 //   progress: integer("progress").default(0),
 // });
+export type Book = {
+  id: string;
+  title: string;
+  author: string;
+  category: string;
+  coverUrl: string;
+  lastOpened: string;
+  progress: number;
+};
 
 // export const userBooks = pgTable("user_books", {
 //   id: serial("id").primaryKey(),
