@@ -56,3 +56,18 @@ export function formatTimeLeft(progress: number): string {
     return "5+ hours";
   }
 }
+export function getHeaders(): Record<string, string> {
+  const token = getTokenFromCookie();
+  const headers: Record<string, string> = {
+    ...{ "Content-Type": "application/json" },
+    ...(token ? { Authorization: `Token ${token}` } : {}),
+  };
+  return headers;
+}
+export function getTokenFromCookie(): string | null {
+  const token = document.cookie
+    .split("; ")
+    .find((row) => row.startsWith("jwt="))
+    ?.split("=")[1];
+  return token ? token : null;
+}

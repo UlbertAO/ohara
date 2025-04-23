@@ -10,12 +10,17 @@ export interface PaginatedResponse<T> {
   };
 }
 
-export interface UserWithoutPassword {
-  id: number;
-  username: string;
-  email: string;
-  firstName?: string;
-  lastName?: string;
+export interface CurrentUser {
+  users: {
+    id: number;
+    username: string;
+    email: string;
+    firstName?: string;
+    lastName?: string;
+  };
+}
+export interface UserToken {
+  token: string;
 }
 
 export interface BooksResponse extends PaginatedResponse<Book> {}

@@ -1,5 +1,6 @@
 import { BooksResponse } from "../shared/types";
 import { queryClient } from "./queryClient";
+import { getTokenFromCookie } from "./utils";
 
 const API_MODE = import.meta.env.VITE_API_MODE || "live";
 
@@ -30,12 +31,7 @@ export const api = {
     const response = await fetch(`/api/books?${params}`, {
       credentials: "include",
       headers: {
-        Authorization: `Bearer ${
-          document.cookie
-            .split("; ")
-            .find((row) => row.startsWith("jwt="))
-            ?.split("=")[1]
-        }`,
+        Authorization: `Bearer ${getTokenFromCookie()}`,
       },
     });
 

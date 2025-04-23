@@ -80,18 +80,18 @@ export default function Navbar() {
                     className="relative h-8 w-8 rounded-full"
                   >
                     <Avatar className="h-8 w-8">
-                      <AvatarImage src="" alt={user.username} />
+                      <AvatarImage src="" alt={user.users.username} />
                       <AvatarFallback className="bg-primary text-primary-foreground">
-                        {user.username.substring(0, 2).toUpperCase()}
+                        {user.users.username.substring(0, 2).toUpperCase()}
                       </AvatarFallback>
                     </Avatar>
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent className="w-56" align="end" forceMount>
                   <div className="flex flex-col space-y-1 leading-none p-2">
-                    <p className="font-medium">{user.username}</p>
+                    <p className="font-medium">{user.users.username}</p>
                     <p className="text-xs text-muted-foreground">
-                      {user.email}
+                      {user.users.email}
                     </p>
                   </div>
                   <DropdownMenuSeparator />
@@ -188,15 +188,17 @@ export default function Navbar() {
                         <div className="flex items-center border-t border-gray-200 pt-4 px-4">
                           <Avatar className="h-10 w-10 mr-4">
                             <AvatarFallback className="bg-primary text-primary-foreground">
-                              {user.username.substring(0, 2).toUpperCase()}
+                              {user.users.username
+                                .substring(0, 2)
+                                .toUpperCase()}
                             </AvatarFallback>
                           </Avatar>
                           <div>
                             <p className="font-medium text-secondary">
-                              {user.username}
+                              {user.users.username}
                             </p>
                             <p className="text-sm text-muted-foreground">
-                              {user.email}
+                              {user.users.email}
                             </p>
                           </div>
                         </div>

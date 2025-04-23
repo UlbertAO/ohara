@@ -83,7 +83,8 @@ export default function DashboardPage() {
             My Library Dashboard
           </h1>
           <p className="text-secondary">
-            Welcome back{user?.firstName ? `, ${user.firstName}` : ""}! Here's
+            Welcome back
+            {user?.users?.firstName ? `, ${user?.users.firstName}` : ""}! Here's
             your personalized library experience.
           </p>
         </div>
