@@ -32,6 +32,7 @@ import {
 } from "../components/ui/table";
 import { formatDate, formatTimeLeft } from "../lib/utils";
 import { Pagination } from "../components/ui/pagination";
+import { API_ROUTE } from "../constants/config";
 
 export default function DashboardPage() {
   const { user } = useAuth();
@@ -42,7 +43,7 @@ export default function DashboardPage() {
 
   // Fetch user books (currently reading)
   const { data: userBooksData, isLoading: isLoadingUserBooks } = useQuery({
-    queryKey: ["/api/user/books", page],
+    queryKey: [API_ROUTE.GET_BOOKS, page],
     queryFn: async () => {
       return await api.getUserBooks(page, 3);
     },
@@ -50,7 +51,7 @@ export default function DashboardPage() {
 
   // Fetch all books with pagination
   const { data: allBooksData, isLoading: isLoadingBooks } = useQuery({
-    queryKey: ["/api/books", page, filter],
+    queryKey: [API_ROUTE.GET_BOOKS, page, filter],
     queryFn: async () => {
       return await api.getBooks(page, 5, filter);
     },
@@ -100,7 +101,8 @@ export default function DashboardPage() {
                 {isLoadingUserBooks ? (
                   <Loader2 className="h-6 w-6 animate-spin" />
                 ) : (
-                  userBooksData?.meta.totalItems || 0
+                  // userBooksData?.meta.totalItems || 0
+                  userBooksData?.length || 0
                 )}
               </p>
             </CardContent>
@@ -115,7 +117,7 @@ export default function DashboardPage() {
                 {isLoadingUserBooks ? (
                   <Loader2 className="h-6 w-6 animate-spin" />
                 ) : (
-                  userBooksData?.data.filter(
+                  userBooksData?.filter(
                     (book) => book.progress > 0 && book.progress < 100
                   ).length || 0
                 )}
@@ -132,7 +134,7 @@ export default function DashboardPage() {
                 {isLoadingUserBooks ? (
                   <Loader2 className="h-6 w-6 animate-spin" />
                 ) : (
-                  userBooksData?.data.filter((book) => {
+                  userBooksData?.filter((book) => {
                     const lastMonth = new Date();
                     lastMonth.setMonth(lastMonth.getMonth() - 1);
                     return (
@@ -171,9 +173,9 @@ export default function DashboardPage() {
               <div className="flex justify-center py-8">
                 <Loader2 className="h-8 w-8 animate-spin text-primary" />
               </div>
-            ) : userBooksData?.data && userBooksData.data.length > 0 ? (
+            ) : userBooksData && userBooksData.length > 0 ? (
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                {userBooksData.data.slice(0, 3).map((book) => (
+                {userBooksData.slice(0, 3).map((book) => (
                   <div
                     key={book.id}
                     className="flex bg-background rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow"
@@ -278,8 +280,8 @@ export default function DashboardPage() {
                         <Loader2 className="h-8 w-8 animate-spin mx-auto text-primary" />
                       </TableCell>
                     </TableRow>
-                  ) : allBooksData?.data && allBooksData.data.length > 0 ? (
-                    allBooksData.data.map((book) => (
+                  ) : allBooksData && allBooksData.length > 0 ? (
+                    allBooksData.map((book) => (
                       <TableRow key={book.id}>
                         <TableCell>
                           <div className="flex items-center">
@@ -357,11 +359,13 @@ export default function DashboardPage() {
             </div>
 
             {/* Pagination Controls */}
-            {allBooksData && allBooksData.meta.totalPages > 1 && (
+            {/* {allBooksData && allBooksData.meta.totalPages > 1 && ( */}
+            {allBooksData && (
               <div className="mt-6 flex justify-center">
                 <Pagination
                   currentPage={page}
-                  totalPages={allBooksData.meta.totalPages}
+                  // totalPages={allBooksData.meta.totalPages}
+                  totalPages={5}
                   onPageChange={setPage}
                 />
               </div>

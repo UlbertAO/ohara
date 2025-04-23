@@ -2,12 +2,12 @@ import { Book } from "./schema";
 
 export interface PaginatedResponse<T> {
   data: T[];
-  meta: {
-    currentPage: number;
-    totalPages: number;
-    totalItems: number;
-    itemsPerPage: number;
-  };
+  // meta: {
+  //   currentPage: number;
+  //   totalPages: number;
+  //   totalItems: number;
+  //   itemsPerPage: number;
+  // };
 }
 
 export interface CurrentUser {
@@ -23,4 +23,5 @@ export interface UserToken {
   token: string;
 }
 
-export interface BooksResponse extends PaginatedResponse<Book> {}
+// export interface BooksResponse extends PaginatedResponse<Book> {}
+export type BooksResponse = Book[];

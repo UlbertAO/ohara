@@ -4,4 +4,5 @@ export const API_ROUTE = {
   LOGIN: "/auth/users/login",
   CURRENT_USER: "/auth/users/current",
   LOGOUT: "/api/logout",
+  GET_BOOKS: "/api/books",
 };

@@ -1,19 +1,10 @@
+import { API_BASE_URL, API_ROUTE } from "../constants/config";
 import { BooksResponse } from "../shared/types";
 import { queryClient } from "./queryClient";
-import { getTokenFromCookie } from "./utils";
 
 const API_MODE = import.meta.env.VITE_API_MODE || "live";
 
-// Base API service with mode switching
 export const api = {
-  mode: API_MODE as "mock" | "live",
-
-  setMode(mode: "mock" | "live") {
-    this.mode = mode;
-    // Clear cache when switching modes
-    queryClient.clear();
-  },
-
   async getBooks(
     page = 1,
     limit = 10,
@@ -21,19 +12,19 @@ export const api = {
   ): Promise<BooksResponse> {
     const params = new URLSearchParams({
       page: page.toString(),
-      limit: limit.toString(),
+      "per-page": limit.toString(),
     });
 
     if (filter) {
-      params.append("filter", filter);
+      params.append("q", filter);
     }
 
-    const response = await fetch(`/api/books?${params}`, {
-      credentials: "include",
-      headers: {
-        Authorization: `Bearer ${getTokenFromCookie()}`,
-      },
-    });
+    const response = await fetch(
+      `${API_BASE_URL}${API_ROUTE.GET_BOOKS}?${params}`,
+      {
+        credentials: "include",
+      }
+    );
 
     if (!response.ok) {
       const errorText = await response.text();
@@ -46,12 +37,15 @@ export const api = {
   async getUserBooks(page = 1, limit = 10): Promise<BooksResponse> {
     const params = new URLSearchParams({
       page: page.toString(),
-      limit: limit.toString(),
+      "per-page": limit.toString(),
     });
 
-    const response = await fetch(`/api/user/books?${params}`, {
-      credentials: "include",
-    });
+    const response = await fetch(
+      `${API_BASE_URL}${API_ROUTE.GET_BOOKS}?${params}`,
+      {
+        credentials: "include",
+      }
+    );
 
     if (!response.ok) {
       if (response.status === 401) {
