@@ -1,54 +1,40 @@
-# React + TypeScript + Vite
+# Ohara - A Book Web App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Ohara is a frontend-only web application for managing books. It is built using **Injee**, an instant in-memory JSON database that provides ready-to-use CRUD APIs, making development faster and easier for frontend developers.
 
-Currently, two official plugins are available:
+## About Injee
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Injee is a no-configuration, instant database designed for frontend developers. It provides:
 
-## Expanding the ESLint configuration
+- In-memory JSON storage.
+- Built-in CRUD APIs for rapid development.
+- A seamless experience for frontend developers who need a quick and reliable data source without waiting for backend APIs.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Installation
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+1. Setup Backend : **Injee**
+   ```bash
+   docker pull mindaslab/injee:0.14.0
+   ```
+2. Clone this repository:
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+   ```bash
+   git clone https://github.com/your-username/ohara.git
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+   cd ohara
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+   yarn install
+
+   yarn run dev
+   ```
+
+3. Run Backend
+   ```bash
+   docker run -p 4125:4125 \
+   -v "$(pwd)/files:/app/files" \
+   -v "$(pwd)/views:/app/views" \
+   -v "$(pwd)/backups:/app/backups" \
+   -v "$(pwd)/mocks:/app/mocks" \
+   mindaslab/injee:0.14.0
+   ```
+   Note: if you want to use any other port do specify in src\constants\config.ts `API_BASE_URL`
