@@ -113,9 +113,7 @@ export default function AuthPage() {
       <div className="container flex justify-between items-center h-16 px-4">
         <Link href="/" className="flex items-center text-primary">
           <BookOpen className="h-6 w-6 mr-2" />
-          <span className="font-poppins font-bold text-xl">
-            World Book Library
-          </span>
+          <span className="font-poppins font-bold text-xl">Ohara</span>
         </Link>
       </div>
 
@@ -130,7 +128,7 @@ export default function AuthPage() {
               <CardDescription>
                 {activeTab === "login"
                   ? "Log in to access your library and continue reading."
-                  : "Sign up to start your reading journey with World Book Library."}
+                  : "Sign up to start your reading journey with Ohara."}
               </CardDescription>
             </CardHeader>
 

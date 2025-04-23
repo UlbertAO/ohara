@@ -38,7 +38,7 @@ export default function Navbar() {
             href="/"
             className="font-poppins font-bold text-xl text-primary"
           >
-            World Book Library
+            Ohara
           </Link>
         </div>
 

@@ -1,4 +1,3 @@
-import "./App.css";
 import { ThemeProvider } from "next-themes";
 import { AuthProvider } from "./hooks/use-auth";
 import { TooltipProvider } from "./components/ui/tooltip";

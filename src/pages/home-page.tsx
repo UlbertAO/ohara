@@ -10,11 +10,11 @@ import {
 } from "lucide-react";
 import { useAuth } from "../hooks/use-auth";
 import Navbar from "../components/layout/navbar";
-import ParallaxSection from "../components/ui/parallax-section";
 import { Link } from "wouter";
 import { Button } from "../components/ui/button";
 import { Card, CardContent } from "../components/ui/card";
 import Footer from "../components/layout/footer";
+import ParallaxSection from "../components/parallax-section";
 
 // Feature data
 const features = [
@@ -87,7 +87,7 @@ const collections = [
 // Testimonials
 const testimonials = [
   {
-    text: "The World Book Library has completely changed how I research. I can access any resource I need instantly, and the search functionality is exceptional.",
+    text: "The Ohara has completely changed how I research. I can access any resource I need instantly, and the search functionality is exceptional.",
     name: "Sarah Johnson",
     title: "Professor, University of California",
     avatar:
@@ -101,7 +101,7 @@ const testimonials = [
       "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
   },
   {
-    text: "I use the World Book Library for both personal reading and student assignments. The ability to create collections and assign reading is a game-changer for educators.",
+    text: "I use the Ohara for both personal reading and student assignments. The ability to create collections and assign reading is a game-changer for educators.",
     name: "Jessica Martinez",
     title: "High School Teacher",
     avatar:

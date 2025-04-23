@@ -19,9 +19,7 @@ export default function Footer() {
           <div>
             <div className="flex items-center mb-4">
               <BookOpen className="h-6 w-6 mr-2" />
-              <span className="font-poppins font-bold text-xl">
-                World Book Library
-              </span>
+              <span className="font-poppins font-bold text-xl">Ohara</span>
             </div>
             <p className="text-gray-300 mb-4">
               Your gateway to the world's knowledge. Access millions of books,
@@ -173,8 +171,7 @@ export default function Footer() {
 
         <div className="border-t border-gray-700 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-300 text-sm mb-4 md:mb-0">
-            &copy; {new Date().getFullYear()} World Book Library. All rights
-            reserved.
+            &copy; {new Date().getFullYear()} Ohara. All rights reserved.
           </p>
           <div className="flex space-x-6">
             <Link
