@@ -194,7 +194,7 @@ export default function AuthPage() {
                         </div>
                         <Link
                           href="#"
-                          className="text-sm text-accent hover:text-primary"
+                          className="text-sm text-secondary hover:text-primary"
                         >
                           Forgot password?
                         </Link>
@@ -218,7 +218,7 @@ export default function AuthPage() {
                     Don't have an account?{" "}
                     <Button
                       variant="link"
-                      className="font-medium text-accent hover:text-primary p-0"
+                      className="font-medium text-primary hover:text-primary p-0"
                       onClick={() => handleTabChange("register")}
                     >
                       Sign up
@@ -325,11 +325,11 @@ export default function AuthPage() {
                         <Checkbox id="terms" required />
                         <Label htmlFor="terms" className="text-sm">
                           I agree to the{" "}
-                          <Link href="#" className="text-accent">
+                          <Link href="#" className="text-secondary">
                             Terms of Service
                           </Link>{" "}
                           and{" "}
-                          <Link href="#" className="text-accent">
+                          <Link href="#" className="text-secondary">
                             Privacy Policy
                           </Link>
                         </Label>
@@ -353,7 +353,7 @@ export default function AuthPage() {
                     Already have an account?{" "}
                     <Button
                       variant="link"
-                      className="font-medium text-accent hover:text-primary p-0"
+                      className="font-medium text-primary hover:text-primary p-0"
                       onClick={() => handleTabChange("login")}
                     >
                       Log in

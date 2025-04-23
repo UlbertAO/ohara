@@ -37,4 +37,10 @@ Injee is a no-configuration, instant database designed for frontend developers. 
    -v "$(pwd)/mocks:/app/mocks" \
    mindaslab/injee:0.14.0
    ```
-   Note: if you want to use any other port do specify in src\constants\config.ts `API_BASE_URL`
+   Note: if you want to use any other port do specify in src\constants\config.ts `API_BASE_URL` and in generateBooks.js `API_ENDPOINT`
+
+4 Book details
+
+```bash
+node .\generateBooks.js
+```

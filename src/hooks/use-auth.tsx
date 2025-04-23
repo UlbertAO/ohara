@@ -4,7 +4,7 @@ import {
   useQuery,
 } from "@tanstack/react-query";
 import { UserToken, CurrentUser } from "../shared/types";
-import { createContext, ReactNode, useContext } from "react";
+import { createContext, ReactNode, useContext, useEffect } from "react";
 import { useToast } from "./use-toast";
 import { apiRequest, getQueryFn, queryClient } from "../lib/queryClient";
 import { jwtDecode } from "jwt-decode";
@@ -38,6 +38,16 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     staleTime: 0,
     initialData: null,
   });
+  useEffect(() => {
+    if (!user || !user.users) {
+      logoutMutation.mutate();
+      toast({
+        title: "Session Expired",
+        description: "Your session has expired. Please log in again.",
+        variant: "destructive",
+      });
+    }
+  }, [user]);
 
   const loginMutation = useMutation({
     mutationFn: async (credentials: LoginUser) => {
